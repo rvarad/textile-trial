@@ -37,6 +37,24 @@ async function createNewWeave(newData) {
 	}
 }
 
+async function updateWeaveData(updatedData) {
+	try {
+		const res = await fetch(
+			`http://localhost:3000/api/v1/weaveSettings/editWeaveData`,
+			{
+				method: "PUT",
+				body: JSON.stringify({ data: updatedData }),
+			}
+		)
+
+		const data = await res.json()
+
+		console.log(data)
+	} catch (error) {
+		console.log(error)
+	}
+}
+
 // function WeaveModal({
 // 	weaveName,
 // 	warpWeftWidthShrinkageType,
@@ -162,7 +180,11 @@ function WeaveModal({
 		warpWeftWidthShrinkage?: number
 		additionalFabricShrinkageAllowance: number
 	}) {
-		createNewWeave(data)
+		if (invocationType === "new") {
+			createNewWeave(data)
+		} else {
+			updateWeaveData(data)
+		}
 		handleClose()
 	}
 

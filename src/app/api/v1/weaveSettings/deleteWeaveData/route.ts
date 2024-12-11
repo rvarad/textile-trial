@@ -1,4 +1,3 @@
-import { error } from "console"
 import { dataArray } from "../sampleData"
 
 async function DELETE(req: Request) {
@@ -21,7 +20,7 @@ async function DELETE(req: Request) {
 		return new Response(
 			JSON.stringify({
 				message: "Weave deletion successful",
-				data: dataArray,
+				data: db,
 			})
 		)
 	} catch (error) {
