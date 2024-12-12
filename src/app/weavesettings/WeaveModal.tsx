@@ -198,66 +198,69 @@ function WeaveModal({
 			<Modal
 				open={modalOpen}
 				onClose={handleClose}
-				sx={{ background: "white" }}
+				sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
 			>
-				<div>
-					<FormProvider {...form}>
-						<form onSubmit={form.handleSubmit(onSubmit)}>
-							<FormControl>
-								<label htmlFor="weaveName">Weave Name</label>
-								<FormTextField
-									required={true}
-									id="weaveName"
-									name="weaveName"
-									type="text"
-								/>
-							</FormControl>
-							<FormControl>
-								<label htmlFor="warpWeftWidthShrinkageType">
-									Warp Weft Width Shrinkage Type
-								</label>
-								<FormSelectField
-									name="warpWeftWidthShrinkageType"
-									id="warpWeftWidthShrinkageType"
-									label="Warp Weft Width Shrinkage Type"
-									options={["Default", "Custom"]}
-								/>
-								<FormHelperText>
-									By setting the value to custom fou can overwrite the warp/weft
-									width shrinkage for this weave. This will apply to all counts
-								</FormHelperText>
-							</FormControl>
-							{warpWeftWidthShrinkageTypeInputValue === "Custom" && (
+				<div className="modal-box">
+					<div className="form-container">
+						<FormProvider {...form}>
+							<form onSubmit={form.handleSubmit(onSubmit)}>
 								<FormControl>
-									<label htmlFor="warpWeftWidthShrinkage">
-										Warp Weft Width Shrinkage
+									<label htmlFor="weaveName">Weave Name</label>
+									<FormTextField
+										required={true}
+										id="weaveName"
+										name="weaveName"
+										type="text"
+									/>
+								</FormControl>
+								<FormControl>
+									<label htmlFor="warpWeftWidthShrinkageType">
+										Warp Weft Width Shrinkage Type
+									</label>
+									<FormSelectField
+										name="warpWeftWidthShrinkageType"
+										id="warpWeftWidthShrinkageType"
+										label="Warp Weft Width Shrinkage Type"
+										options={["Default", "Custom"]}
+									/>
+									<FormHelperText>
+										By setting the value to custom fou can overwrite the
+										warp/weft width shrinkage for this weave. This will apply to
+										all counts
+									</FormHelperText>
+								</FormControl>
+								{warpWeftWidthShrinkageTypeInputValue === "Custom" && (
+									<FormControl>
+										<label htmlFor="warpWeftWidthShrinkage">
+											Warp Weft Width Shrinkage
+										</label>
+										<FormTextField
+											required={true}
+											id="warpWeftWidthShrinkage"
+											name="warpWeftWidthShrinkage"
+											type="number"
+											inputAdornmentValue="%"
+										/>
+									</FormControl>
+								)}
+								<FormControl>
+									<label htmlFor="additionalFabricShrinkageAllowance">
+										Additional Fabric Shrinkage Allowance
 									</label>
 									<FormTextField
 										required={true}
-										id="warpWeftWidthShrinkage"
-										name="warpWeftWidthShrinkage"
+										id="additionalFabricShrinkageAllowance"
+										name="additionalFabricShrinkageAllowance"
 										type="number"
-										inputAdornmentValue="%"
+										inputAdornmentValue="inches"
 									/>
 								</FormControl>
-							)}
-							<FormControl>
-								<label htmlFor="additionalFabricShrinkageAllowance">
-									Additional Fabric Shrinkage Allowance
-								</label>
-								<FormTextField
-									required={true}
-									id="additionalFabricShrinkageAllowance"
-									name="additionalFabricShrinkageAllowance"
-									type="number"
-									inputAdornmentValue="inches"
-								/>
-							</FormControl>
-							<button type="submit">Save</button>
-							<button onClick={handleClose}>Close</button>
-						</form>
-						<DevTool control={form.control} />
-					</FormProvider>
+								<button type="submit">Save</button>
+								<button onClick={handleClose}>Close</button>
+							</form>
+							<DevTool control={form.control} />
+						</FormProvider>
+					</div>
 				</div>
 			</Modal>
 		</div>

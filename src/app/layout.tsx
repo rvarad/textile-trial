@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
-// import "./globals.css"
+import "./globals.css"
 import Sidebar from "@/components/Sidebar"
 
 const geistSans = localFont({
@@ -35,8 +35,10 @@ export default function RootLayout({
 						<button>User Profile</button>
 					</div>
 				</header>
-				<Sidebar />
-				{children}
+				<main>
+					<Sidebar />
+					{children}
+				</main>
 			</body>
 		</html>
 	)

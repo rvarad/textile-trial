@@ -7,28 +7,38 @@ function Sidebar() {
 
 	const style = "font-extrabold"
 	return (
-		<div>
+		<div className="sidebar">
 			<Link
 				href="/"
-				className={pathname === "/" ? style : ""}
+				// className={pathname === "/" ? "current nav-elements" : "nav-elements"}
+				className={`nav-elements ${pathname === "/" ? "current" : ""}`}
 			>
 				Dashboard
 			</Link>
 			<Link
 				href={"/folders"}
-				className={pathname === `${/^\/folders\/.+$/}` ? style : ""}
+				// className={
+				// 	pathname === `${/^\/folders\/.+$/}`
+				// 	? "current nav-elements"
+				// 		: "nav-elements"
+				// 	}
+				className={`nav-elements ${pathname === "/folders" ? "current" : ""}`}
 			>
 				Folders
 			</Link>
 			<Link
 				href={"/weavesettings"}
-				className={pathname === `${/^\/weavesettings\/.+$/}` ? style : ""}
+				className={`nav-elements ${
+					pathname === "/weavesettings" ? "current" : ""
+				}`}
 			>
 				Weave Settings
 			</Link>
 			<Link
 				href={"/yarncounts"}
-				className={pathname === `${/^\/yarncounts\/.+$/}` ? style : ""}
+				className={
+					pathname === "/yarncounts" ? "current nav-elements" : "nav-elements"
+				}
 			>
 				Yarn Rules
 			</Link>
